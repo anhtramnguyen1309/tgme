@@ -12,3 +12,5 @@ gunicorn
 nest_asyncio
 aiohttp
 apscheduler
+gspread
+google-auth
