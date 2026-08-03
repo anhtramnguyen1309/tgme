@@ -4,3 +4,4 @@ credentials.json
 .vscode/
 __pycache__/
 *.pyc
+rate_cache.json
