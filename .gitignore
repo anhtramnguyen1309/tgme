@@ -4,4 +4,7 @@ __pycache__/
 
 credentials.json
 .env
+
+.vscode/
+
 rate_cache.json
