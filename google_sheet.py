@@ -7,6 +7,11 @@ from datetime import datetime, timedelta
 from config import DEFAULT_TRIAL_DAYS
 from config import SHEET_ID
 from typing import Dict
+import os
+import json
+import gspread
+
+from google.oauth2.service_account import Credentials
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive",
@@ -17,10 +22,23 @@ class GoogleSheet:
 
     def __init__(self):
 
-        creds = Credentials.from_service_account_file(
+        if os.path.exists("credentials.json"):
+
+            creds = Credentials.from_service_account_file(
             "credentials.json",
-            scopes=SCOPES
-        )
+            scopes=SCOPES,
+    )
+
+        else:
+
+            credentials_dict = json.loads(
+            os.environ["GOOGLE_CREDENTIALS"]
+    )
+
+            creds = Credentials.from_service_account_info(
+            credentials_dict,
+            scopes=SCOPES,
+    )
 
         client = gspread.authorize(creds)
 
