@@ -12,7 +12,7 @@ from telegram.ext import (
 from rate_service import background_updater
 from config import BOT_TOKEN
 from keyboards import get_keyboard
-
+import asyncio
 from commands import (
     check_tygia,
     thanhtoan,
@@ -75,7 +75,7 @@ scheduler = AsyncIOScheduler(timezone="Asia/Seoul")
 async def post_init(application):
 
     # background updater
-    application.create_task(background_updater())
+    asyncio.create_task(background_updater())
 
     # Auto Push 10h
     scheduler.add_job(
