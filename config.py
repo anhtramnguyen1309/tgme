@@ -1,8 +1,13 @@
-BOT_TOKEN = "8991843397:AAEfSgtQ5mLEKvoFYQdxiz2PNgCJngIP9RA"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+SHEET_ID = os.getenv("SHEET_ID")
 
 ADMIN_IDS = [
-    1555474257,      # Telegram User ID của bạn
+    1555474257,
 ]
 
-SHEET_ID = "1ctfG2pWq93tB0w7-QGGS94XVH28dkZ0lU_dyK86YqfQ"
 DEFAULT_TRIAL_DAYS = 10

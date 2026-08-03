@@ -1,10 +1,6 @@
+.env
+credentials.json
 .venv/
+.vscode/
 __pycache__/
 *.pyc
-
-credentials.json
-.env
-
-.vscode/
-
-rate_cache.json
