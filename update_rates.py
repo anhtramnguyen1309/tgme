@@ -2,7 +2,7 @@ import asyncio
 import inspect
 import json
 from datetime import datetime
-
+from zoneinfo import ZoneInfo
 from tcr import get_cross_rate
 from te9 import get_e9pay_rate
 from tjrf import get_jrf_rate
@@ -56,22 +56,28 @@ async def update_rates():
 
             print(f"{name} lỗi: {e}")
             rates[name] = None
+ 
 
-    data = {
-        "updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+     updated_time = datetime.now(
+         ZoneInfo("Asia/Seoul")
+    ).strftime("%Y-%m-%d %H:%M:%S")
+
+     data = {
+        "updated": updated_time,
         "rates": rates,
-    }
-    global rate_cache
-    global last_update
+}
 
-    rate_cache = rates
-    last_update = data["updated"]
-    
-    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+     global rate_cache
+     global last_update
+
+     rate_cache = rates
+     last_update = updated_time
+
+     with open(CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-    print("\nĐã cập nhật thành công!")
-    print(data)
+     print("\n✅ Đã cập nhật thành công!")
+     print(data)
 
 
 async def main():
