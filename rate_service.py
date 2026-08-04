@@ -64,7 +64,11 @@ async def update_rates():
             rates[name] = None
 
     data = {
-        "updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        from zoneinfo import ZoneInfo
+
+        "updated": datetime.now(
+         ZoneInfo("Asia/Seoul")
+         ).strftime("%Y-%m-%d %H:%M:%S"),
         "rates": rates,
     }
 
