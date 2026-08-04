@@ -2,7 +2,7 @@ import asyncio
 import inspect
 import json
 from datetime import datetime
-
+from zoneinfo import ZoneInfo
 from tcr import get_cross_rate
 from te9 import get_e9pay_rate
 from tjrf import get_jrf_rate
@@ -71,7 +71,7 @@ async def update_rates():
             rates[name] = None
 
     data = {
-        from zoneinfo import ZoneInfo
+       
 
         "updated": datetime.now(
          ZoneInfo("Asia/Seoul")
@@ -107,4 +107,4 @@ async def background_updater():
         except Exception as e:
             print("Lỗi update:", e)
 
-        await asyncio.sleep(60)   # 2 phút
+        await asyncio.sleep(30)   # 30s
