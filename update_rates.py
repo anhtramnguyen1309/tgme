@@ -1,6 +1,7 @@
 import asyncio
 import inspect
 import json
+
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from tcr import get_cross_rate
@@ -26,58 +27,56 @@ async def update_rates():
         "GME": get_gme_rate,
         "Coinshot": get_coinshot_rate,
         "SBI": get_sbi_rate,
-        "Utransfer": get_utransfer_rate
+        "Utransfer": get_utransfer_rate,
     }
 
-    rates = {}
-
-    for name, func in apps.items():
-
+    async def run_one(name, func):
         try:
 
-            # Nếu là async def
             if inspect.iscoroutinefunction(func):
                 rate = await func()
-
-            # Nếu là def
             else:
-                rate = func()
+                # Chạy hàm đồng bộ trên thread riêng
+                rate = await asyncio.to_thread(func)
 
             if rate is not None:
                 rate = round(float(rate), 3)
-                rates[name] = rate
                 print(f"{name}: {rate}")
+                return name, rate
 
-            else:
-                rates[name] = None
-                print(f"{name}: Không có dữ liệu")
+            print(f"{name}: Không có dữ liệu")
+            return name, None
 
         except Exception as e:
-
             print(f"{name} lỗi: {e}")
-            rates[name] = None
- 
+            return name, None
 
-     updated_time = datetime.now(
-         ZoneInfo("Asia/Seoul")
+    # Chạy tất cả cùng lúc
+    results = await asyncio.gather(
+        *(run_one(name, func) for name, func in apps.items())
+    )
+
+    rates = dict(results)
+
+    updated = datetime.now(
+        ZoneInfo("Asia/Seoul")
     ).strftime("%Y-%m-%d %H:%M:%S")
 
-     data = {
-        "updated": updated_time,
+    data = {
+        "updated": updated,
         "rates": rates,
-}
+    }
 
-     global rate_cache
-     global last_update
+    global rate_cache
+    global last_update
 
-     rate_cache = rates
-     last_update = updated_time
+    rate_cache = data
+    last_update = updated
 
-     with open(CACHE_FILE, "w", encoding="utf-8") as f:
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-     print("\n✅ Đã cập nhật thành công!")
-     print(data)
+    print("\n✅ Đã cập nhật thành công!")
 
 
 async def main():
@@ -88,7 +87,7 @@ async def main():
 
         print("\nĐợi 5 phút...\n")
 
-        await asyncio.sleep(60)
+        await asyncio.sleep(30)
 
 
 if __name__ == "__main__":
