@@ -15,10 +15,17 @@ from tu import get_utransfer_rate
 
 CACHE_FILE = "rate_cache.json"
 
-# Cache trong RAM
 rate_cache = {}
-
 last_update = None
+
+# Đọc cache từ file khi khởi động
+try:
+    with open(CACHE_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        rate_cache = data
+        last_update = data.get("updated")
+except:
+    pass
 
 def get_cached_rates():
     return rate_cache
