@@ -82,7 +82,7 @@ async def main():
 
         print("\nĐợi 5 phút...\n")
 
-        await asyncio.sleep(300)
+        await asyncio.sleep(60)
 
 
 if __name__ == "__main__":
