@@ -100,4 +100,4 @@ async def background_updater():
         except Exception as e:
             print("Lỗi update:", e)
 
-        await asyncio.sleep(120)   # 2 phút
+        await asyncio.sleep(60)   # 2 phút
