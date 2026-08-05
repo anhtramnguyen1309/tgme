@@ -81,7 +81,7 @@ async def thanhtoan(
             "🏦 <b>Ngân hàng:</b> HanaBank\n"
             "👤 <b>Chủ tài khoản:</b> LE THI YEN\n\n"
             "🔢 <b>SỐ TÀI KHOẢN:</b>\n"
-            "<code>000000055555</code>"
+            "<b>000000055555</b>"
         ),
         parse_mode="HTML",
     )
@@ -97,7 +97,7 @@ async def thanhtoan(
         ),
         parse_mode="HTML",
     )
-    )
+    
 async def hsd(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
