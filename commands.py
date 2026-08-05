@@ -66,24 +66,37 @@ async def thanhtoan(
     context: ContextTypes.DEFAULT_TYPE,
 ):
 
-    text = (
-        "💳 <b>THÔNG TIN THANH TOÁN</b>\n\n"
-        "💰 <b>Phí sử dụng:</b> <b>8.999 KRW / Tháng</b>\n\n"
-        "🏦 <b>Ngân hàng:</b> Hanabank\n"
-        "👤 <b>Chủ tài khoản:</b> LE THI YEN\n"
-        "🔢 <b>SỐ TÀI KHOẢN:</b>\n\n"
-        "<code>000000055555</code>\n\n"
-        
-        "📩 Sau khi chuyển khoản thành công,\n"
-        "vui lòng nhắn tin đến:\n\n"
-        "👉 <b>@JoyceNguyenzz</b>\n\n"
-        "⚡ Tài khoản sẽ được kích hoạt ngay sau khi xác nhận thanh toán.\n\n"
-        "❤️ Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ!"
+    # Tin nhắn 1
+    await update.message.reply_text(
+        (
+            "💳 <b>THÔNG TIN THANH TOÁN</b>\n\n"
+            "💰 <b>Phí sử dụng:</b> <b>8.999 KRW / Tháng</b>"
+        ),
+        parse_mode="HTML",
     )
 
+    # Tin nhắn 2
     await update.message.reply_text(
-        text,
+        (
+            "🏦 <b>Ngân hàng:</b> HanaBank\n"
+            "👤 <b>Chủ tài khoản:</b> LE THI YEN\n\n"
+            "🔢 <b>SỐ TÀI KHOẢN:</b>\n"
+            "<code>000000055555</code>"
+        ),
         parse_mode="HTML",
+    )
+
+    # Tin nhắn 3
+    await update.message.reply_text(
+        (
+            "📩 Sau khi chuyển khoản thành công,\n"
+            "vui lòng nhắn tin đến:\n\n"
+            "👉 <b>@JoyceNguyenzz</b>\n\n"
+            "⚡ Tài khoản sẽ được kích hoạt ngay sau khi xác nhận thanh toán.\n\n"
+            "❤️ Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ!"
+        ),
+        parse_mode="HTML",
+    )
     )
 async def hsd(
     update: Update,
