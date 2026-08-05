@@ -75,14 +75,13 @@ async def thanhtoan(
         parse_mode="HTML",
     )
 
-   # Tin nhắn 2
-   await update.message.reply_text(
-    (
-          "🏦 <b>Ngân hàng:</b> HanaBank\n"
-          "👤 <b>Chủ tài khoản:</b> LE THI YEN\n\n"
-          "🔢 <b>Số tài khoản:</b> <b>000000055555</b>\n"
-    ),
- 
+    # Tin nhắn 2
+    await update.message.reply_text(
+        (
+            "🏦 <b>Ngân hàng:</b> HanaBank\n"
+            "👤 <b>Chủ tài khoản:</b> LE THI YEN\n\n"
+            "🔢 <b>Số tài khoản:</b> <b>000000055555</b>\n"
+        ),
         parse_mode="HTML",
     )
 
@@ -97,7 +96,6 @@ async def thanhtoan(
         ),
         parse_mode="HTML",
     )
-    
 async def hsd(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
