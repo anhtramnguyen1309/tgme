@@ -71,9 +71,8 @@ async def thanhtoan(
         "💰 <b>Phí sử dụng:</b> <b>8.999 KRW / Tháng</b>\n\n"
         "🏦 <b>Ngân hàng:</b> Hanabank\n"
         "👤 <b>Chủ tài khoản:</b> LE THI YEN\n"
-       
         "🔢 <b>SỐ TÀI KHOẢN:</b>\n\n"
-        "<b>000000055555</b>\n\n"
+        "<code>000000055555</code>\n\n"
         
         "📩 Sau khi chuyển khoản thành công,\n"
         "vui lòng nhắn tin đến:\n\n"
