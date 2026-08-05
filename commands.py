@@ -72,9 +72,9 @@ async def thanhtoan(
         "🏦 <b>Ngân hàng:</b> Hanabank\n"
         "👤 <b>Chủ tài khoản:</b> LE THI YEN\n"
        
-        "🔢 <b>SỐ TÀI KHOẢN</b>\n\n"
-        "<b>000000055555</b>\n"
-        "━━━━━━━━━━━━━━━━━━━━\n\n"
+        "🔢 <b>SỐ TÀI KHOẢN:</b>\n\n"
+        "<b>000000055555</b>\n\n"
+        
         "📩 Sau khi chuyển khoản thành công,\n"
         "vui lòng nhắn tin đến:\n\n"
         "👉 <b>@JoyceNguyenzz</b>\n\n"
