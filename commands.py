@@ -79,9 +79,10 @@ async def thanhtoan(
     await update.message.reply_text(
         (
             "🏦 <b>Ngân hàng:</b> HanaBank\n"
-            "👤 <b>Chủ tài khoản:</b> LE THI YEN\n\n"
-            "🔢 <b>SỐ TÀI KHOẢN:</b>\n"
-            "<b>000000055555</b>"
+            "👤 <b>Chủ tài khoản:</b> LE THI YEN\n"
+            "🔢 <b>Số tài khoản:</b>\n"
+                "<code>000000055555</code>"
+            
         ),
         parse_mode="HTML",
     )
